@@ -98,7 +98,7 @@ html[lang=ar] .menu{letter-spacing:0;font-size:15px;font-family:Alexandria}
 .rail a:hover{border-color:var(--lav);background:rgba(185,163,196,.15)}
 .rail i{width:1px;height:50px;background:linear-gradient(var(--lav),transparent)}
 /* player */
-.player{position:fixed;inset-inline-start:clamp(14px,3.4vw,56px);bottom:22px;z-index:85;display:flex;align-items:center;gap:12px;padding:8px 18px 8px 8px;border-radius:999px;background:rgba(20,17,22,.78);backdrop-filter:blur(14px);border:1px solid var(--line);max-width:calc(100vw - 110px)}
+.player{position:fixed;inset-inline-start:clamp(14px,3.4vw,56px);bottom:22px;z-index:85;display:flex;align-items:center;gap:12px;padding:8px 18px 8px 8px;border-radius:999px;background:rgba(20,17,22,.78);backdrop-filter:blur(14px);border:1px solid var(--line);max-width:calc(100vw - 180px)}
 .player img{width:44px;height:44px;border-radius:50%;object-fit:cover}
 .player.on img{animation:spin 6s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -316,8 +316,11 @@ select option{background:#151217}
 footer{padding:40px clamp(18px,7vw,140px) 110px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--mute);font-size:13px}
 footer .lk{display:flex;gap:20px;flex-wrap:wrap}
 #conf{display:none;flex-basis:100%;max-width:760px}
-.wa{position:fixed;bottom:22px;inset-inline-end:22px;z-index:85;width:58px;height:58px;border-radius:50%;background:#1DB954;display:grid;place-items:center;box-shadow:0 10px 30px rgba(29,185,84,.35);transition:transform .3s}
-.wa:hover{transform:scale(1.08)}
+.fabs{position:fixed;bottom:22px;inset-inline-end:22px;z-index:85;display:flex;gap:12px;align-items:center}
+.fb{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;transition:transform .3s}
+.fb:hover{transform:scale(1.08)}
+.fb.sp{background:#1DB954;box-shadow:0 10px 30px rgba(29,185,84,.35)}
+.fb.wa{background:#25d366;box-shadow:0 10px 30px rgba(37,211,102,.3)}
 .lb{position:fixed;inset:0;z-index:150;background:rgba(5,5,6,.94);display:none;place-items:center;padding:4vh 4vw}
 .lb.on{display:grid}
 .lb img{max-width:100%;max-height:88vh;object-fit:contain}
@@ -528,7 +531,7 @@ footer .lk{display:flex;gap:20px;flex-wrap:wrap}
   <div class="lk"><a href="#news">News</a><a href="#contact" data-i="m4b">Contact</a><a href="#" id="pc" data-i="pc">Politique de confidentialité</a></div>
   <p id="conf" data-i="pct">Ce site ne collecte aucune donnée personnelle et n’utilise pas de cookies. Le formulaire prépare un message que vous envoyez vous-même au management.</p>
 </footer>
-<a class="wa sp" href="https://open.spotify.com/artist/01haa57xRGVU3u7Nly8OD4" target="_blank" rel="noopener" aria-label="Écouter Badr Soultan sur Spotify"><svg width="30" height="30" viewBox="0 0 24 24" fill="#0b0a0c"><path d="M12 1.5a10.5 10.5 0 1 0 0 21 10.5 10.5 0 0 0 0-21zm4.8 15.1a.65.65 0 0 1-.9.2c-2.5-1.5-5.6-1.9-9.3-1a.65.65 0 1 1-.3-1.3c4-.9 7.5-.5 10.3 1.2.3.2.4.6.2.9zm1.3-2.9a.82.82 0 0 1-1.1.3c-2.8-1.7-7.1-2.2-10.5-1.2a.82.82 0 1 1-.5-1.6c3.8-1.2 8.6-.6 11.8 1.4.4.2.5.7.3 1.1zm.1-3c-3.4-2-9-2.2-12.2-1.2a1 1 0 1 1-.6-1.9c3.7-1.1 9.9-.9 13.8 1.4a1 1 0 0 1-1 1.7z"/></svg></a>
+<div class="fabs"><a class="fb sp" href="https://open.spotify.com/artist/01haa57xRGVU3u7Nly8OD4" target="_blank" rel="noopener" aria-label="Écouter Badr Soultan sur Spotify"><svg width="30" height="30" viewBox="0 0 24 24" fill="#0b0a0c"><path d="M12 1.5a10.5 10.5 0 1 0 0 21 10.5 10.5 0 0 0 0-21zm4.8 15.1a.65.65 0 0 1-.9.2c-2.5-1.5-5.6-1.9-9.3-1a.65.65 0 1 1-.3-1.3c4-.9 7.5-.5 10.3 1.2.3.2.4.6.2.9zm1.3-2.9a.82.82 0 0 1-1.1.3c-2.8-1.7-7.1-2.2-10.5-1.2a.82.82 0 1 1-.5-1.6c3.8-1.2 8.6-.6 11.8 1.4.4.2.5.7.3 1.1zm.1-3c-3.4-2-9-2.2-12.2-1.2a1 1 0 1 1-.6-1.9c3.7-1.1 9.9-.9 13.8 1.4a1 1 0 0 1-1 1.7z"/></svg></a><a class="fb wa" href="https://wa.me/212638780325" target="_blank" rel="noopener" aria-label="WhatsApp management"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.4.2.5.3.1.2.1.7-.2 1.2z"/></svg></a></div>
 <div class="lb" id="lb" role="dialog" aria-modal="true"><img id="lbImg" alt=""><button id="lbX" aria-label="Fermer">×</button></div>
 
 <script>
