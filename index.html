@@ -748,7 +748,7 @@ function setAuto(on){auto=on&&!RM;$('#apIco').innerHTML=auto?AP_PAUSE:AP_PLAY;co
 function autoLoop(t){
   if(auto){const dt=lastT?Math.min(.05,(t-lastT)/1000):0;lastT=t;
     const max=document.documentElement.scrollHeight-innerHeight;
-    if(scrollY>=max-2){setAuto(false)}else{acc+=innerHeight*.2*dt;if(acc>=1){const d=Math.floor(acc);acc-=d;scrollTo(0,scrollY+d)}}}
+    if(scrollY>=max-2){setAuto(false)}else{acc+=innerHeight*.28*dt;if(acc>=1){const d=Math.floor(acc);acc-=d;scrollTo(0,scrollY+d)}}}
   requestAnimationFrame(autoLoop)}
 requestAnimationFrame(autoLoop);
 // le visiteur reprend la main dès qu'il touche à la page
