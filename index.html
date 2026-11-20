@@ -51,6 +51,11 @@ html[lang=ar] .lab{letter-spacing:0;font-size:14px;font-family:Alexandria}
 .pre .nm{font-size:clamp(34px,6vw,96px)}
 .pre .nm span{display:inline-block;opacity:0;transform:translateY(40%);animation:up .8s cubic-bezier(.2,.8,.2,1) forwards}
 @keyframes up{to{opacity:1;transform:none}}
+.pre.ask{pointer-events:auto}
+.pre .enter{display:none;margin-top:34px;gap:12px;flex-direction:column;align-items:center}
+.pre.ask .enter{display:flex;animation:fi .8s}
+.pre .enter .btn{min-width:220px}
+.pre .enter button.mute{background:none;border:0;color:var(--mute);font:500 13px 'Inter Tight',Alexandria,sans-serif;cursor:pointer;text-decoration:underline;text-underline-offset:4px;min-height:44px}
 .pre .n{font-family:Archivo;font-stretch:125%;font-weight:300;font-size:14px;letter-spacing:.3em;color:var(--mute);margin-top:18px;font-variant-numeric:tabular-nums}
 /* nav */
 .nav{position:fixed;inset:0 0 auto;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px clamp(18px,3.4vw,56px);transition:.4s}
@@ -331,7 +336,7 @@ footer .lk{display:flex;gap:20px;flex-wrap:wrap}
 </style>
 </head>
 <body class="lock">
-<div class="pre" id="pre"><div class="h t"></div><div class="h b"></div><div class="c"><div><div class="nm wide" id="preN"></div><div class="n" id="preC">000</div></div></div></div>
+<div class="pre" id="pre"><div class="h t"></div><div class="h b"></div><div class="c"><div><div class="nm wide" id="preN"></div><div class="n" id="preC">000</div><div class="enter"><button class="btn" id="enterBtn" type="button"><svg width="12" height="12" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1.5l9 5.5-9 5.5z"/></svg><span data-i="en1">Entrer</span></button><button class="mute" id="muteBtn" type="button" data-i="en2">Entrer sans le son</button></div></div></div></div>
 <div class="grain"></div><div class="cols" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="pg" id="pg"></div>
 <div class="cdot" id="cdot"></div><div class="cring" id="cring"></div>
 <div class="peek" id="peek"><img alt="" id="peekImg"></div>
@@ -561,7 +566,7 @@ const SOC=[
  ['Facebook','https://www.facebook.com/badrsoultanofficiel','<path d="M15 3h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h2z"/>']
 ];
 const PLAT=[['Spotify','https://open.spotify.com/search/Badr%20Soultan'],['Apple Music','https://music.apple.com/search?term=Badr%20Soultan'],['YouTube Music','https://music.youtube.com/search?q=Badr%20Soultan'],['Deezer','https://www.deezer.com/search/Badr%20Soultan']];
-const AR={np:'لندن · 05.12.2026',m1:'القصة',m2:'الموسيقى',m3:'الأخبار',m4:'التواصل',m4b:'التواصل',
+const AR={en1:'ادخل',en2:'الدخول بدون صوت',np:'لندن · 05.12.2026',m1:'القصة',m2:'الموسيقى',m3:'الأخبار',m4:'التواصل',m4b:'التواصل',
 h_l1:'الموقع الرسمي',h_l2:'أحفير · الشرق · المغرب',h_b1:'استمع إلى لوطوروت',h_b2:'قصته',
 st1:'هناك أصوات نعرفها من أول نغمة.',st2:'وهذا الصوت وُلد في شرق المغرب، <span class="wide" style="font-style:normal">في أحفير.</span>',cap1:'الوجه A · الفصل الأول',
 ah_k:'الفصل الأول',ah_p1:'مدينة صغيرة في الجهة الشرقية، على حافة الحدود وعند سفح الجبال. هنا للموسيقى اسم: الركادة. أكتاف ترقص وأعراس تمتد حتى الفجر.',ah_p2:'هنا كبر بدر زكراوي. وهنا صار <em class="it">بدر سلطان</em>.',
@@ -605,11 +610,14 @@ $('#lang').addEventListener('click',()=>setLang(L==='ar'?'fr':'ar'));
 
 /* ---------- musique (Lotorot) + analyse ---------- */
 const aud=$('#aud'),bars=$$('#bars i');let actx,an,fd,level=0;
+// gesture=true : clic de l'utilisateur → on peut brancher l'analyse audio sans risque de couper le son
+function startMusic(gesture){
+  if(gesture&&!actx){try{actx=new (window.AudioContext||window.webkitAudioContext)();const s=actx.createMediaElementSource(aud);an=actx.createAnalyser();an.fftSize=64;s.connect(an);an.connect(actx.destination);fd=new Uint8Array(an.frequencyBinCount)}catch(_){}}
+  actx&&actx.resume&&actx.resume();
+  return aud.play().then(()=>{$('#player').classList.add('on');$('#pico').innerHTML='<path d="M3 1.5h3v11H3zM8 1.5h3v11H8z"/>'});
+}
 function playToggle(){
-  if(aud.paused){aud.play().then(()=>{
-    if(!actx){try{actx=new (window.AudioContext||window.webkitAudioContext)();const s=actx.createMediaElementSource(aud);an=actx.createAnalyser();an.fftSize=64;s.connect(an);an.connect(actx.destination);fd=new Uint8Array(an.frequencyBinCount)}catch(_){}}
-    actx&&actx.resume&&actx.resume();$('#player').classList.add('on');$('#pico').innerHTML='<path d="M3 1.5h3v11H3zM8 1.5h3v11H8z"/>';
-  }).catch(()=>{})}else{aud.pause();$('#player').classList.remove('on');$('#pico').innerHTML='<path d="M3 1.5l9 5.5-9 5.5z"/>'}
+  if(aud.paused){startMusic(true).catch(()=>{})}else{aud.pause();$('#player').classList.remove('on');$('#pico').innerHTML='<path d="M3 1.5l9 5.5-9 5.5z"/>'}
 }
 $('#pbtn').addEventListener('click',playToggle);
 document.addEventListener('click',e=>{if(e.target.closest('[data-play]')&&aud.paused)playToggle()});
@@ -711,7 +719,10 @@ $('#pc').addEventListener('click',e=>{e.preventDefault();const c=$('#conf');c.st
 let saved='fr';try{saved=localStorage.getItem('bs3-lang')||'fr'}catch(_){}
 setLang(saved);requestAnimationFrame(frame);
 (function pre(){const t0=performance.now(),D=RM?200:1700;const step=n=>{const k=clamp((n-t0)/D);$('#preC').textContent=String(Math.round(ease(k)*100)).padStart(3,'0');
-  if(k<1)requestAnimationFrame(step);else{$('#pre').classList.add('go');document.body.classList.remove('lock');setTimeout(()=>$('#pre').remove(),1300)}};requestAnimationFrame(step)})();
+  if(k<1)requestAnimationFrame(step);else{aud.preload='auto';startMusic(false).then(openSite).catch(()=>$('#pre').classList.add('ask'))}};requestAnimationFrame(step)})();
+function openSite(){const pr=$('#pre');if(!pr||pr.classList.contains('go'))return;pr.classList.remove('ask');pr.classList.add('go');document.body.classList.remove('lock');setTimeout(()=>pr.remove(),1300)}
+$('#enterBtn').addEventListener('click',()=>{startMusic(true).catch(()=>{});openSite()});
+$('#muteBtn').addEventListener('click',openSite);
 }
 </script>
 </body>
