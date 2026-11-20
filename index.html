@@ -231,6 +231,68 @@ html[dir=rtl] .song .mt{direction:rtl}
 .mini:after{content:"";position:absolute;inset:32%;border-radius:50%;background:url(photos/door.webp) center/cover;box-shadow:0 0 0 2px var(--gold)}
 .hbar{position:absolute;left:clamp(18px,7vw,140px);right:clamp(18px,7vw,140px);bottom:4vh;height:1px;background:var(--line)}
 .hbar i{display:block;height:100%;width:0;background:var(--lav)}
+.pt-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(30px,5vw,80px);margin-top:30px}
+.pt-t{font-size:clamp(44px,5vw,88px);margin-bottom:16px}
+.pt-types{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:28px 0}
+.pt-ty{padding:20px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(140deg,rgba(255,255,255,.05),transparent);transition:.35s}
+.pt-ty:hover{border-color:rgba(185,163,196,.5);transform:translateY(-4px)}
+.pt-ty b{display:block;font-family:Archivo;font-stretch:115%;font-weight:700;text-transform:uppercase;font-size:16px;margin:10px 0 6px}
+.pt-ty p{color:var(--mute);font-size:14px}
+.pt-ty .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(185,163,196,.14);color:var(--lav)}
+.pt-cta{display:flex;gap:10px;flex-wrap:wrap}
+.pt-list{list-style:none;margin:16px 0 14px;border-top:1px solid var(--line)}
+.pt-list li{display:flex;justify-content:space-between;gap:14px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
+.pt-list b{font-family:Archivo;font-stretch:115%;font-weight:700;font-size:clamp(18px,1.6vw,24px);text-transform:uppercase}
+.pt-list span{color:var(--mute);font-size:13px;text-align:end}
+@media(max-width:900px){.pt-grid,.pt-types{grid-template-columns:1fr}}
+/* ===== FINALE ===== */
+#finale{height:300vh;position:relative;background:#070608}
+.fi-bg{position:absolute;inset:-5%;background:url(photos/door-hd.webp) 50% 20%/cover;filter:brightness(.2) saturate(.5) blur(3px);transform:scale(1.1)}
+#finale .stick:after{content:"";position:absolute;inset:0;background:radial-gradient(55% 55% at 50% 50%,transparent,rgba(7,6,8,.92));pointer-events:none}
+.fi-beams i{position:absolute;top:-20%;left:50%;width:34vw;height:150%;transform-origin:50% 0;background:linear-gradient(180deg,rgba(185,163,196,.32),transparent 70%);clip-path:polygon(47% 0,53% 0,100% 100%,0 100%);filter:blur(8px);mix-blend-mode:screen;opacity:0;transition:opacity 1.2s;animation:fsw 9s ease-in-out infinite alternate}
+.fi-beams i:nth-child(2){animation-delay:-3s;background:linear-gradient(180deg,rgba(201,166,107,.3),transparent 70%)}
+.fi-beams i:nth-child(3){animation-delay:-5s;animation-duration:11s}
+.fi-beams i:nth-child(4){animation-delay:-7s;background:linear-gradient(180deg,rgba(125,40,70,.35),transparent 70%)}
+@keyframes fsw{0%{transform:translateX(-50%) rotate(-38deg)}100%{transform:translateX(-50%) rotate(38deg)}}
+#finale.on .fi-beams i{opacity:1}
+.fi-stage{position:absolute;inset:0;perspective:1500px;display:grid;place-items:center}
+.ring{position:relative;width:1px;height:1px;transform-style:preserve-3d;will-change:transform}
+.rc{position:absolute;left:calc(var(--s)/-2);top:calc(var(--s)/-2);width:var(--s);height:var(--s);border-radius:4px;overflow:hidden;box-shadow:0 30px 60px -20px #000;opacity:0;transition:opacity .8s}
+.rc img{width:100%;height:100%;object-fit:cover}
+.rc:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.18),transparent 45%)}
+#finale.on .rc{opacity:1}
+.fi-disc{position:absolute;width:min(30vh,40vw);aspect-ratio:1;border-radius:50%;background:repeating-radial-gradient(circle,#0c0b0d 0 1.5px,#1d1a1f 1.5px 3px);box-shadow:0 0 0 1px #000,0 0 120px rgba(201,166,107,.25),0 50px 90px -20px #000;will-change:transform}
+.fi-disc:after{content:"";position:absolute;inset:31%;border-radius:50%;background:url(photos/door-hd.webp) 50% 18%/cover;box-shadow:0 0 0 3px #c9a66b,0 0 0 6px #0c0b0d}
+.fi-disc:before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 200deg,transparent 0 10%,rgba(255,240,220,.15) 16%,transparent 24% 60%,rgba(255,240,220,.08) 66%,transparent 74%);z-index:1}
+.fi-txt{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;z-index:3;pointer-events:none;opacity:0}
+.fi-txt h2{font-size:clamp(70px,13vw,250px);line-height:.82;background:linear-gradient(100deg,#8c7550,#f6ead2 35%,#c9a66b 55%,#f3f0ec 70%,#8c7550);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite;filter:drop-shadow(0 10px 40px rgba(0,0,0,.7));margin:14px 0}
+@keyframes shine{to{background-position:-250% 0}}
+.fi-txt p{font-size:clamp(22px,2.4vw,40px);color:#e9e3ea}
+.fi-card{position:absolute;left:50%;bottom:5vh;width:min(980px,92vw);transform:translate(-50%,40%);opacity:0;z-index:4;padding:clamp(20px,2.6vw,34px);border-radius:26px;background:linear-gradient(140deg,rgba(255,255,255,.1),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(22px) saturate(1.3);-webkit-backdrop-filter:blur(22px) saturate(1.3);box-shadow:0 40px 100px -30px #000,inset 0 1px 0 rgba(255,255,255,.15);overflow:hidden}
+.fi-card:before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:conic-gradient(from var(--ang,0deg),transparent 0 60%,#c9a66b 70%,#f6ead2 75%,#b9a3c4 80%,transparent 90%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:ang 5s linear infinite;pointer-events:none}
+@property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes ang{to{--ang:360deg}}
+.fi-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.fi-name{display:block;font-family:Archivo;font-stretch:120%;font-weight:800;font-size:clamp(22px,2.2vw,34px);text-transform:uppercase;margin-top:4px}
+.fi-next{display:inline-flex;align-items:center;gap:10px;min-height:42px;padding:0 16px;border-radius:999px;background:rgba(226,86,111,.14);border:1px solid rgba(226,86,111,.45);font-size:13px;font-weight:600;white-space:nowrap}
+.fi-next i{width:8px;height:8px;border-radius:50%;background:#e2566f;box-shadow:0 0 12px #e2566f;animation:bl 1.4s infinite}
+.fi-acts{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px}
+.fi-a{display:flex;align-items:center;gap:14px;min-height:72px;padding:14px 18px;border-radius:18px;background:rgba(11,10,12,.55);border:1px solid rgba(255,255,255,.1);transition:transform .35s,background .35s,border-color .35s}
+.fi-a:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.35);background:rgba(11,10,12,.75)}
+.fi-a.wa{background:linear-gradient(135deg,#25d366,#128c4b);border-color:transparent;color:#05140b}
+.fi-a.wa small{color:rgba(5,20,11,.75)}
+.fi-a small{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+html[lang=ar] .fi-a small{letter-spacing:0;font-size:13px}
+.fi-a b{font-weight:600;font-size:15px;direction:ltr;unicode-bidi:isolate;white-space:nowrap}
+.fi-soc{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.fi-soc a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid rgba(255,255,255,.14);font-size:13px;font-weight:500;transition:.3s}
+.fi-soc a:hover{background:rgba(255,255,255,.1)}
+.fi-soc a.sp{background:#1DB954;color:#05140b;border-color:transparent;font-weight:700}
+.fi-burst{position:absolute;left:50%;top:50%;z-index:2;pointer-events:none}
+.fi-burst i{position:absolute;width:4px;height:4px;border-radius:50%;background:#f6ead2;box-shadow:0 0 8px #c9a66b;opacity:0}
+#finale.boom .fi-burst i{animation:boom 1.8s cubic-bezier(.1,.7,.2,1) forwards}
+@keyframes boom{0%{opacity:1;transform:translate(0,0) scale(1.4)}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(.4)}}
+@media(max-width:900px){.fi-acts{grid-template-columns:1fr}.fi-a{min-height:58px}.fi-card{bottom:92px;border-radius:20px;max-height:calc(100svh - 170px);overflow:auto}.fi-soc a{padding:0 12px}.fi-txt{top:30%}}
 /* marquee */
 .mq{overflow:hidden;padding:30px 0;border-block:1px solid var(--line);background:var(--bk)}
 .mq-in{display:flex;width:max-content;animation:mq 40s linear infinite;direction:ltr;align-items:center}
@@ -502,6 +564,7 @@ footer .lk{display:flex;gap:20px;flex-wrap:wrap}
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" aria-selected="true" data-p="pc1" data-i="ct1">Contact</button>
       <button class="tab" role="tab" aria-selected="false" data-p="pc2" data-i="ct2">Affiches d’événements</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="pc3" data-i="ct3">Partenaires</button>
     </div>
     <div class="pane on" id="pc1" role="tabpanel">
       <div class="ct-grid">
@@ -526,9 +589,48 @@ footer .lk{display:flex;gap:20px;flex-wrap:wrap}
       </div>
     </div>
     <div class="pane" id="pc2" role="tabpanel"><div class="fly" id="fly"></div></div>
+    <div class="pane" id="pc3" role="tabpanel">
+      <div class="pt-grid">
+        <div>
+          <h3 class="pt-t wide" data-i="pt_t">Collaborons</h3>
+          <p class="sub" data-i="pt_s">Marques, organisateurs, médias, labels et artistes : Badr Soultan est ouvert aux collaborations qui lui ressemblent — authentiques, généreuses et fières de leurs racines.</p>
+          <div class="pt-types" id="ptTypes"></div>
+          <div class="pt-cta"><a class="btn" id="ptWa" target="_blank" rel="noopener" data-i="pt_b1">Proposer une collaboration</a><a class="btn ghost" id="ptMail" data-i="pt_b2">Par e-mail</a></div>
+        </div>
+        <div>
+          <span class="lab" data-i="pt_k">Ils ont travaillé avec Badr</span>
+          <ul class="pt-list" id="ptList"></ul>
+          <p class="note" data-i="pt_n">Collaborations visibles sur ses sorties officielles et affiches.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 </main>
+
+<!-- ===== FINALE ===== -->
+<section id="finale" aria-labelledby="fi-t">
+  <div class="stick">
+    <div class="fi-bg"></div>
+    <div class="fi-beams"><i></i><i></i><i></i><i></i></div>
+    <div class="fi-stage"><div class="ring" id="ring"></div><div class="fi-disc" id="fiDisc"></div></div>
+    <div class="fi-burst" id="fiBurst"></div>
+    <div class="fi-txt" id="fiTxt">
+      <span class="lab" data-i="fi_k">Fin de la face B</span>
+      <h2 class="wide" id="fi-t">BADR<br>SOULTAN</h2>
+      <p class="it" data-i="fi_p">Merci d’avoir écouté. La suite s’écrit avec vous.</p>
+    </div>
+    <div class="fi-card" id="fiCard">
+      <div class="fi-top"><div><span class="lab" data-i="fi_c">Management &amp; booking</span><b class="fi-name">Mohamed Zakraoui</b></div><a class="fi-next" href="#news" data-tab="pn2"><i></i><span id="fiNext"></span></a></div>
+      <div class="fi-acts">
+        <a class="fi-a wa" href="https://wa.me/212638780325" target="_blank" rel="noopener"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.4.2.5.3.1.2.1.7-.2 1.2z"/></svg><span><small>WhatsApp</small><b>+212 638 780 325</b></span></a>
+        <a class="fi-a" href="tel:+212603458059"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span><small data-i="fi_tel">Appeler</small><b>+212 603 458 059</b></span></a>
+        <a class="fi-a" href="mailto:Badr.soultan@gmail.com"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m3 6 9 7 9-7"/></svg><span><small data-i="fi_mail">E-mail</small><b>Badr.soultan@gmail.com</b></span></a>
+      </div>
+      <div class="fi-soc" id="fiSoc"></div>
+    </div>
+  </div>
+</section>
 
 <footer>
   <div><b style="color:var(--ink);font-family:Archivo;font-stretch:125%;letter-spacing:.06em">BADR SOULTAN</b> · <span data-i="ft">Site officiel · © 2026 Badr Soultan — Tous droits réservés</span></div>
@@ -610,7 +712,7 @@ const SOC=[
  ['Spotify','https://open.spotify.com/artist/01haa57xRGVU3u7Nly8OD4','<circle cx="12" cy="12" r="9"/><path d="M7.5 10c3-1 6.5-.7 9 .8M8 13c2.4-.7 5-.5 7 .7M8.6 15.8c1.8-.5 3.7-.3 5.2.5"/>']
 ];
 const PLAT=[['Spotify','https://open.spotify.com/artist/01haa57xRGVU3u7Nly8OD4'],['Apple Music','https://music.apple.com/search?term=Badr%20Soultan'],['YouTube Music','https://music.youtube.com/search?q=Badr%20Soultan'],['Deezer','https://www.deezer.com/search/Badr%20Soultan']];
-const AR={en1:'شغّل الصوت · ادخل إلى عالمه',np:'لندن · 05.12.2026',m1:'القصة',m2:'الموسيقى',m3:'الأخبار',m4:'التواصل',m4b:'التواصل',
+const AR={ct3:'الشركاء',pt_t:'لنتعاون',pt_s:'العلامات التجارية والمنظمون والإعلام وشركات الإنتاج والفنانون: بدر سلطان منفتح على التعاونات التي تشبهه، أصيلة وكريمة وفخورة بجذورها.',pt_b1:'اقترح تعاوناً',pt_b2:'عبر البريد الإلكتروني',pt_k:'عملوا مع بدر',pt_n:'تعاونات ظاهرة في إصداراته الرسمية وملصقاته.',fi_k:'نهاية الوجه B',fi_p:'شكراً على الاستماع. البقية نكتبها معكم.',fi_c:'الإدارة والحجز',fi_tel:'اتصال',fi_mail:'البريد الإلكتروني',en1:'شغّل الصوت · ادخل إلى عالمه',np:'لندن · 05.12.2026',m1:'القصة',m2:'الموسيقى',m3:'الأخبار',m4:'التواصل',m4b:'التواصل',
 h_l1:'الموقع الرسمي',h_l2:'أحفير · الشرق · المغرب',h_b1:'استمع إلى لوطوروت',h_b2:'قصته',
 st1:'هناك أصوات نعرفها من أول نغمة.',st2:'وهذا الصوت وُلد في شرق المغرب، <span class="wide" style="font-style:normal">في أحفير.</span>',cap1:'الوجه A · الفصل الأول',
 ah_k:'الفصل الأول',ah_p1:'مدينة صغيرة في الجهة الشرقية، على حافة الحدود وعند سفح الجبال. هنا للموسيقى اسم: الركادة. أكتاف ترقص وأعراس تمتد حتى الفجر.',ah_p2:'هنا كبر بدر زكراوي. وهنا صار <em class="it">بدر سلطان</em>.',
@@ -650,7 +752,7 @@ let cards=[];
 function setLang(l){L=l;const d=document.documentElement;d.lang=l;d.dir=l==='ar'?'rtl':'ltr';
   $$('[data-i]').forEach(e=>{const v=(l==='ar'?AR:FR)[e.dataset.i];if(v!=null)e.innerHTML=v});
   $$('[data-ph]').forEach(e=>e.placeholder=l==='ar'?AR[e.dataset.ph]:FRPH[e.dataset.ph]);
-  $('#lang').textContent=l==='ar'?'Français':'العربية';render();bindPeek();try{localStorage.setItem('bs3-lang',l)}catch(_){}}
+  $('#lang').textContent=l==='ar'?'Français':'العربية';render();renderFinale();renderPartners();bindPeek();try{localStorage.setItem('bs3-lang',l)}catch(_){}}
 $('#lang').addEventListener('click',()=>setLang(L==='ar'?'fr':'ar'));
 
 /* ---------- musique (Lotorot) + analyse ---------- */
@@ -741,6 +843,40 @@ addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;const pk=$('#peek')
 document.addEventListener('pointerover',e=>cring.classList.toggle('big',!!e.target.closest('a,button,.song,figure')));
 function bindPeek(){$$('[data-peek]').forEach(a=>{a.addEventListener('pointerenter',e=>{if(e.pointerType!=='mouse')return;$('#peekImg').src=a.dataset.peek;const pk=$('#peek');pk.style.left=e.clientX+'px';pk.style.top=e.clientY+'px';pk.classList.add('on')});a.addEventListener('pointerleave',()=>$('#peek').classList.remove('on'))})}
 
+/* ---------- partenaires ---------- */
+const PTYPES=[
+ {i:'<path d="M20 12V8H4v4M2 12h20v8H2zM12 8V4"/>',fr:['Marques & sponsoring','Campagnes, placements, contenus réseaux sociaux.'],ar:['العلامات والرعاية','حملات إعلانية ومحتوى لمواقع التواصل.']},
+ {i:'<path d="M3 21h18M5 21V9l7-6 7 6v12"/>',fr:['Organisateurs & festivals','Concerts, tournées, galas, soirées privées.'],ar:['المنظمون والمهرجانات','حفلات وجولات وسهرات خاصة.']},
+ {i:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/>',fr:['Médias & presse','Interviews, émissions, plateaux télé et radio.'],ar:['الإعلام والصحافة','مقابلات وبرامج تلفزيونية وإذاعية.']},
+ {i:'<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',fr:['Artistes & labels','Duos, featurings, productions et distribution.'],ar:['الفنانون وشركات الإنتاج','ديوهات وأعمال مشتركة وإنتاج.']}];
+const PLIST=[['Egzona','Duo « Galbi Galbi »','ديو «قلبي قلبي»'],['Hajar Adnane','Duo « Manich Manna »','ديو «مانيش منا»'],['Rifdragon','« Arifino »','«عارفينو»'],['Nadia Laaroussi','« La Tgoulich La »','«لا تقوليش لا»'],['Folé Publishing','Édition · Galbi Galbi','نشر · قلبي قلبي'],['Digital Sound','« J’ai pas envie »','«J’ai pas envie»'],['Chabaka','Distribution digitale','التوزيع الرقمي'],['Bait Al Asala Event','Live in London 2026','حفل لندن 2026']];
+function renderPartners(){const ar=L==='ar';
+  $('#ptTypes').innerHTML=PTYPES.map(t=>`<div class="pt-ty"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${t.i}</svg></span><b>${t[L][0]}</b><p>${t[L][1]}</p></div>`).join('');
+  $('#ptList').innerHTML=PLIST.map(x=>`<li><b>${x[0]}</b><span>${ar?x[2]:x[1]}</span></li>`).join('');
+  const msg=ar?'السلام عليكم، أود اقتراح تعاون مع بدر سلطان.':'Bonjour, je souhaite proposer une collaboration à Badr Soultan.';
+  $('#ptWa').href='https://wa.me/212638780325?text='+encodeURIComponent(msg);
+  $('#ptMail').href='mailto:Badr.soultan@gmail.com?subject='+encodeURIComponent(ar?'اقتراح تعاون – بدر سلطان':'Proposition de collaboration – Badr Soultan')+'&body='+encodeURIComponent(msg)}
+/* ---------- finale ---------- */
+const RCOV=['gololo-wide','lotorot','hamhayni','galbi','nari','fatema','tmanit','arifino','kifndir','noudi','hiya','yamama','ramadan','manich','youjaani','jaipasenvie'];
+function buildRing(){const mob=innerWidth<900,n=RCOV.length,R=mob?Math.min(innerWidth*.62,250):Math.min(innerWidth*.36,560),sz=mob?92:Math.min(190,innerWidth*.11);
+  $('#ring').style.setProperty('--s',sz+'px');
+  $('#ring').innerHTML=RCOV.map((c,i)=>`<div class="rc" style="transform:rotateY(${i*360/n}deg) translateZ(${R}px);transition-delay:${i*.05}s"><img src="photos/${c}.webp" alt="" loading="lazy"></div>`).join('')}
+buildRing();addEventListener('resize',buildRing);
+$('#fiBurst').innerHTML=Array.from({length:48},(_,i)=>{const a=i/48*6.283,d=180+(i%5)*70;return `<i style="--x:${Math.cos(a)*d}px;--y:${Math.sin(a)*d}px;animation-delay:${(i%6)*.04}s"></i>`}).join('');
+function renderFinale(){$('#fiSoc').innerHTML=SOC.map(x=>`<a href="${x[1]}" target="_blank" rel="noopener"${x[0]==='Spotify'?' class="sp"':''}>${ic(x[2],16)}${x[0]}</a>`).join('');
+  const e=(typeof EVENTS!=='undefined'?EVENTS:[]).find(e=>new Date(e.date)>Date.now()-864e5);
+  if(e){const dd=Math.max(0,Math.ceil((new Date(e.date)-Date.now())/864e5));$('#fiNext').textContent=(L==='ar'?'الحفل القادم · '+e.ar.v+' · بعد '+dd+' يوماً':'Prochain concert · '+e.fr.v+' · J-'+dd)}else $('.fi-next').style.display='none'}
+const fin=$('#finale');let boomed=false;
+function finaleFrame(t){const r=fin.getBoundingClientRect(),H=innerHeight;
+  if(r.top<H&&r.bottom>0){const p=clamp(-r.top/(r.height-H)),e=x=>1-Math.pow(1-x,3);
+    fin.classList.toggle('on',p>.02);
+    $('#ring').style.transform=`rotateX(-14deg) rotateY(${p*300+(RM?0:t/90)}deg) scale(${.6+e(clamp(p/.3))*.4})`;
+    $('#fiDisc').style.transform=`rotate(${p*900+(RM?0:t/14)}deg) scale(${.7+e(clamp(p/.3))*.3-clamp((p-.5)/.3)*.25})`;
+    const a=clamp((p-.1)/.15)*(1-clamp((p-.42)/.12));$('#fiTxt').style.opacity=a;$('#fiTxt').style.transform=`translateY(calc(-50% + ${(1-clamp((p-.1)/.15))*40}px)) scale(${1+clamp((p-.42)/.12)*.08})`;
+    const c=e(clamp((p-.48)/.25));$('#fiCard').style.opacity=c;$('#fiCard').style.transform=`translate(-50%,${(1-c)*40}%)`;$('#fiCard').style.pointerEvents=c>.5?'auto':'none';
+    if(p>.92&&!boomed){boomed=true;fin.classList.add('boom')}if(p<.6&&boomed){boomed=false;fin.classList.remove('boom')}}
+  requestAnimationFrame(finaleFrame)}
+requestAnimationFrame(finaleFrame);
 /* ---------- défilement automatique ---------- */
 let auto=false,acc=0,lastT=0;
 const AP_PAUSE='<path d="M3 1.5h3v11H3zM8 1.5h3v11H8z"/>',AP_PLAY='<path d="M3.5 1.5l9 5.5-9 5.5z"/>';
