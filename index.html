@@ -8,12 +8,26 @@
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Badr Soultan — بدر سلطان · Official">
 <meta property="og:description" content="Une voix née à Ahfir. Amour, famille, foi, racines : l’histoire de Badr Soultan.">
-<meta property="og:image" content="photos/gololo-wide.webp">
+<meta property="og:url" content="https://badrsoultan.vercel.app/">
+<meta property="og:site_name" content="Badr Soultan — Official">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="ar_MA">
+<meta property="og:image" content="https://badrsoultan.vercel.app/og.jpg">
+<meta property="og:image:secure_url" content="https://badrsoultan.vercel.app/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Badr Soultan — بدر سلطان, site officiel">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Badr Soultan — بدر سلطان · Official">
+<meta name="twitter:description" content="La voix de l’Oriental marocain. Son histoire, ses clips, ses concerts.">
+<meta name="twitter:image" content="https://badrsoultan.vercel.app/og.jpg">
+<link rel="canonical" href="https://badrsoultan.vercel.app/">
 <meta name="theme-color" content="#0b0a0c">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600&family=Alexandria:wght@400;600;800&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Badr Soultan","alternateName":["بدر سلطان","Badr Zakraoui"],"jobTitle":"Chanteur","birthPlace":{"@type":"Place","name":"Ahfir, Maroc"},"image":"photos/door.webp","sameAs":["https://www.instagram.com/badrsoultan","https://www.youtube.com/@BadrSoultan","https://www.tiktok.com/@badrsoultantiktok","https://www.facebook.com/badrsoultanofficiel"]}
+{"@context":"https://schema.org","@type":"Person","name":"Badr Soultan","alternateName":["بدر سلطان","Badr Zakraoui"],"jobTitle":"Chanteur","birthPlace":{"@type":"Place","name":"Ahfir, Maroc"},"image":"https://badrsoultan.vercel.app/og.jpg","url":"https://badrsoultan.vercel.app/","sameAs":["https://www.instagram.com/badrsoultan","https://www.youtube.com/@BadrSoultan","https://www.tiktok.com/@badrsoultantiktok","https://www.facebook.com/badrsoultanofficiel"]}
 </script>
 <style>
 /* VOICE  : une star racontée comme un film — sombre, intime, spectaculaire
@@ -245,6 +259,29 @@ html[dir=rtl] .song .mt{direction:rtl}
 .pt-list b{font-family:Archivo;font-stretch:115%;font-weight:700;font-size:clamp(18px,1.6vw,24px);text-transform:uppercase}
 .pt-list span{color:var(--mute);font-size:13px;text-align:end}
 @media(max-width:900px){.pt-grid,.pt-types{grid-template-columns:1fr}}
+/* ===== MUR DES FANS ===== */
+.fw{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,13vw,240px);grid-auto-flow:dense;gap:14px;margin-top:40px}
+.fv{position:relative;overflow:hidden;border-radius:16px;background:#151217;cursor:pointer;border:1px solid var(--line)}
+.fv.big{grid-column:span 2;grid-row:span 2}.fv.tall{grid-row:span 2}.fv.wid{grid-column:span 2}
+.fv img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.8,.2,1),filter .5s;filter:saturate(.9) brightness(.8)}
+.fv:hover img{transform:scale(1.06);filter:saturate(1.1) brightness(.95)}
+.fv:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,10,12,.85),transparent 55%);pointer-events:none}
+.fv .pb{position:absolute;left:50%;top:50%;width:62px;height:62px;margin:-31px 0 0 -31px;border-radius:50%;background:rgba(243,240,236,.92);color:#0b0a0c;display:grid;place-items:center;z-index:2;transition:transform .35s;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.fv:hover .pb{transform:scale(1.12)}
+.fv .ft{position:absolute;left:16px;right:16px;bottom:14px;z-index:2;display:flex;justify-content:space-between;align-items:end;gap:10px}
+.fv .ft b{font-family:Archivo;font-stretch:115%;font-weight:800;text-transform:uppercase;font-size:clamp(15px,1.3vw,20px);line-height:1.05}
+.fv .ft small{display:block;color:var(--lav);font-size:12px;margin-top:3px}
+.fv .yt{font-size:11px;font-weight:700;letter-spacing:.1em;padding:5px 9px;border-radius:6px;background:#ff0033;color:#fff;flex:none}
+.fv iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3}
+.fv.playing:after,.fv.playing .pb,.fv.playing .ft{display:none}
+.fs{position:relative;overflow:hidden;border-radius:16px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;transition:transform .4s}
+.fs:hover{transform:translateY(-4px)}
+.fs.tk{background:radial-gradient(120% 90% at 0% 0%,#25F4EE33,transparent 55%),radial-gradient(120% 90% at 100% 100%,#FE2C5544,transparent 55%),#0e0d10;border:1px solid rgba(255,255,255,.12)}
+.fs.ig{background:linear-gradient(135deg,#feda75,#fa7e1e 25%,#d62976 50%,#962fbf 75%,#4f5bd5)}
+.fs .h{font-family:Archivo;font-stretch:120%;font-weight:900;text-transform:uppercase;font-size:clamp(22px,2.2vw,36px);line-height:.95}
+.fs .u{font-size:14px;opacity:.85;margin-top:6px}
+.fs .go{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 16px;border-radius:999px;background:rgba(255,255,255,.95);color:#0b0a0c;font-weight:700;font-size:13px}
+@media(max-width:900px){.fw{grid-template-columns:1fr 1fr;grid-auto-rows:150px}.fv.big{grid-column:span 2}.fv.wid{grid-column:span 2}}
 /* ===== FINALE ===== */
 #finale{height:300vh;position:relative;background:#070608}
 .fi-bg{position:absolute;inset:-5%;background:url(photos/door-hd.webp) 50% 20%/cover;filter:brightness(.2) saturate(.5) blur(3px);transform:scale(1.1)}
@@ -444,7 +481,7 @@ footer .lk{display:flex;gap:20px;flex-wrap:wrap}
 
 <header class="nav" id="nav">
   <a href="#hero" class="logo">BADR SOULTAN<span>بدر سلطان</span></a>
-  <nav class="menu" aria-label="Navigation"><a href="#ahfir" data-i="m1">Histoire</a><a href="#musique" data-i="m2">Musique</a><a href="#news" data-i="m3">News</a><a href="#contact" data-i="m4">Contact</a></nav>
+  <nav class="menu" aria-label="Navigation"><a href="#ahfir" data-i="m1">Histoire</a><a href="#musique" data-i="m2">Musique</a><a href="#fans" data-i="m5">Fans</a><a href="#news" data-i="m3">News</a><a href="#contact" data-i="m4">Contact</a></nav>
   <div style="display:flex;gap:10px;align-items:center"><a href="#news" class="nextpill" id="nextpill" data-tab="pn2"><i></i><span data-i="np">Londres · 05.12.2026</span></a><button class="lang" id="lang">العربية</button></div>
 </header>
 <aside class="rail" id="rail" aria-label="Réseaux sociaux"></aside>
@@ -535,6 +572,14 @@ footer .lk{display:flex;gap:20px;flex-wrap:wrap}
 </section>
 
 <div class="mq" aria-hidden="true"><div class="mq-in wide" id="mq"></div></div>
+
+<!-- ===== MUR DES FANS ===== -->
+<section class="sec" id="fans" aria-labelledby="fa-t">
+  <span class="lab rv" data-i="fa_k">Mur des fans</span>
+  <h2 class="wide rv" id="fa-t" data-i="fa_t">Ses plus beaux <span class="it">moments</span></h2>
+  <p class="sub rv" data-i="fa_s">Les clips que le public partage, à regarder ici même. Et pour ne rien manquer, rejoignez-le sur TikTok et Instagram.</p>
+  <div class="fw" id="fw"></div>
+</section>
 
 <!-- ===== NEWS ===== -->
 <section class="sec" id="news" aria-labelledby="n-t">
@@ -712,7 +757,7 @@ const SOC=[
  ['Spotify','https://open.spotify.com/artist/01haa57xRGVU3u7Nly8OD4','<circle cx="12" cy="12" r="9"/><path d="M7.5 10c3-1 6.5-.7 9 .8M8 13c2.4-.7 5-.5 7 .7M8.6 15.8c1.8-.5 3.7-.3 5.2.5"/>']
 ];
 const PLAT=[['Spotify','https://open.spotify.com/artist/01haa57xRGVU3u7Nly8OD4'],['Apple Music','https://music.apple.com/search?term=Badr%20Soultan'],['YouTube Music','https://music.youtube.com/search?q=Badr%20Soultan'],['Deezer','https://www.deezer.com/search/Badr%20Soultan']];
-const AR={ct3:'الشركاء',pt_t:'لنتعاون',pt_s:'العلامات التجارية والمنظمون والإعلام وشركات الإنتاج والفنانون: بدر سلطان منفتح على التعاونات التي تشبهه، أصيلة وكريمة وفخورة بجذورها.',pt_b1:'اقترح تعاوناً',pt_b2:'عبر البريد الإلكتروني',pt_k:'عملوا مع بدر',pt_n:'تعاونات ظاهرة في إصداراته الرسمية وملصقاته.',fi_k:'نهاية الوجه B',fi_p:'شكراً على الاستماع. البقية نكتبها معكم.',fi_c:'الإدارة والحجز',fi_tel:'اتصال',fi_mail:'البريد الإلكتروني',en1:'شغّل الصوت · ادخل إلى عالمه',np:'لندن · 05.12.2026',m1:'القصة',m2:'الموسيقى',m3:'الأخبار',m4:'التواصل',m4b:'التواصل',
+const AR={m5:'المعجبون',fa_k:'جدار المعجبين',fa_t:'أجمل <span class="it">لحظاته</span>',fa_s:'الكليبات التي يتشاركها الجمهور، شاهدها هنا مباشرة. ولكي لا يفوتك شيء، تابعه على تيك توك وإنستغرام.',ct3:'الشركاء',pt_t:'لنتعاون',pt_s:'العلامات التجارية والمنظمون والإعلام وشركات الإنتاج والفنانون: بدر سلطان منفتح على التعاونات التي تشبهه، أصيلة وكريمة وفخورة بجذورها.',pt_b1:'اقترح تعاوناً',pt_b2:'عبر البريد الإلكتروني',pt_k:'عملوا مع بدر',pt_n:'تعاونات ظاهرة في إصداراته الرسمية وملصقاته.',fi_k:'نهاية الوجه B',fi_p:'شكراً على الاستماع. البقية نكتبها معكم.',fi_c:'الإدارة والحجز',fi_tel:'اتصال',fi_mail:'البريد الإلكتروني',en1:'شغّل الصوت · ادخل إلى عالمه',np:'لندن · 05.12.2026',m1:'القصة',m2:'الموسيقى',m3:'الأخبار',m4:'التواصل',m4b:'التواصل',
 h_l1:'الموقع الرسمي',h_l2:'أحفير · الشرق · المغرب',h_b1:'استمع إلى لوطوروت',h_b2:'قصته',
 st1:'هناك أصوات نعرفها من أول نغمة.',st2:'وهذا الصوت وُلد في شرق المغرب، <span class="wide" style="font-style:normal">في أحفير.</span>',cap1:'الوجه A · الفصل الأول',
 ah_k:'الفصل الأول',ah_p1:'مدينة صغيرة في الجهة الشرقية، على حافة الحدود وعند سفح الجبال. هنا للموسيقى اسم: الركادة. أكتاف ترقص وأعراس تمتد حتى الفجر.',ah_p2:'هنا كبر بدر زكراوي. وهنا صار <em class="it">بدر سلطان</em>.',
@@ -752,7 +797,7 @@ let cards=[];
 function setLang(l){L=l;const d=document.documentElement;d.lang=l;d.dir=l==='ar'?'rtl':'ltr';
   $$('[data-i]').forEach(e=>{const v=(l==='ar'?AR:FR)[e.dataset.i];if(v!=null)e.innerHTML=v});
   $$('[data-ph]').forEach(e=>e.placeholder=l==='ar'?AR[e.dataset.ph]:FRPH[e.dataset.ph]);
-  $('#lang').textContent=l==='ar'?'Français':'العربية';render();renderFinale();renderPartners();bindPeek();try{localStorage.setItem('bs3-lang',l)}catch(_){}}
+  $('#lang').textContent=l==='ar'?'Français':'العربية';render();renderFinale();renderPartners();renderFans();bindPeek();try{localStorage.setItem('bs3-lang',l)}catch(_){}}
 $('#lang').addEventListener('click',()=>setLang(L==='ar'?'fr':'ar'));
 
 /* ---------- musique (Lotorot) + analyse ---------- */
@@ -831,7 +876,7 @@ function frame(t){
     const md=p*(W-80);$('#mini').style.transform=`translateX(${md}px) rotate(${md/30*57.3}deg)`;$('#hbar').style.width=p*100+'%';
   }
   // menu actif
-  [['#ahfir','#voix','#emotions'],['#musique'],['#news'],['#contact']].forEach((ids,i)=>{const on=ids.some(id=>{const r=$(id).getBoundingClientRect();return r.top<H*.5&&r.bottom>H*.5});$$('.menu a')[i].classList.toggle('on',on)});
+  [['#ahfir','#voix','#emotions'],['#musique'],['#fans'],['#news'],['#contact','#finale']].forEach((ids,i)=>{const on=ids.some(id=>{const r=$(id).getBoundingClientRect();return r.top<H*.5&&r.bottom>H*.5});$$('.menu a')[i].classList.toggle('on',on)});
   // contact
   const cr=$('#contact').getBoundingClientRect();if(cr.top<H)$('#bigout').style.transform=`translateX(${(cr.top/H)*10-10}%)`;
   // curseur
@@ -843,6 +888,33 @@ addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;const pk=$('#peek')
 document.addEventListener('pointerover',e=>cring.classList.toggle('big',!!e.target.closest('a,button,.song,figure')));
 function bindPeek(){$$('[data-peek]').forEach(a=>{a.addEventListener('pointerenter',e=>{if(e.pointerType!=='mouse')return;$('#peekImg').src=a.dataset.peek;const pk=$('#peek');pk.style.left=e.clientX+'px';pk.style.top=e.clientY+'px';pk.classList.add('on')});a.addEventListener('pointerleave',()=>$('#peek').classList.remove('on'))})}
 
+/* ---------- mur des fans ---------- */
+// Pour ajouter des vidéos TikTok / Instagram précises : {type:'tiktok',id:'7300000000000000000'} ou {type:'instagram',id:'C1a2B3c4D5e'}
+const FANWALL=[
+ {t:'Gololo',k:'big',fr:'Le dernier clip',ar:'آخر كليب'},
+ {social:'tk'},
+ {t:'Ha Mhayni',k:'tall',fr:'1 million de vues en 6 jours',ar:'مليون مشاهدة في 6 أيام'},
+ {t:'Galbi Galbi',fr:'avec Egzona',ar:'مع إيغزونا'},
+ {t:'Fatema',k:'wid',fr:'Dans le désert',ar:'في الصحراء'},
+ {social:'ig'},
+ {t:'Ki Ndir Ntoub',fr:'100 % reggada',ar:'ركادة 100%'},
+ {t:'Ahlan Ramadan',k:'wid',fr:'Chant spirituel',ar:'إنشاد روحاني'},
+ {t:'Hiya Lmoral',fr:'Clip officiel',ar:'الكليب الرسمي'},
+ {t:'Nodi Fiqi',fr:'Clip officiel',ar:'الكليب الرسمي'}
+];
+const PLAYI='<svg width="18" height="18" viewBox="0 0 14 14" fill="currentColor"><path d="M3.5 1.5l9 5.5-9 5.5z"/></svg>';
+function renderFans(){const ar=L==='ar';
+  $('#fw').innerHTML=FANWALL.map(f=>{
+    if(f.social==='tk')return `<a class="fs tk" href="https://www.tiktok.com/@badrsoultantiktok" target="_blank" rel="noopener"><div><div class="h">TikTok</div><div class="u">@badrsoultantiktok</div></div><span class="go">${ar?'تابعه':'Suivre'} ↗</span></a>`;
+    if(f.social==='ig')return `<a class="fs ig" href="https://www.instagram.com/badrsoultan" target="_blank" rel="noopener"><div><div class="h">Instagram</div><div class="u">@badrsoultan</div></div><span class="go">${ar?'تابعه':'Suivre'} ↗</span></a>`;
+    const id=YT[f.t],sg=SONGS.find(x=>x.n===f.t),fb='photos/'+(sg?sg.img:'door-hd')+'.webp';return `<div class="fv ${f.k||''}" role="button" tabindex="0" data-yt="${id}" aria-label="${ar?'شاهد':'Regarder'} ${f.t}"><img src="https://i.ytimg.com/vi/${id}/${f.k==='big'||f.k==='wid'?'maxresdefault':'hqdefault'}.jpg" alt="Clip ${f.t}" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://i.ytimg.com/vi/${id}/hqdefault.jpg'}else{this.onerror=null;this.src='${fb}'}"><span class="pb">${PLAYI}</span><div class="ft"><div><b>${f.t}</b><small>${f[L]}</small></div><span class="yt">YouTube</span></div></div>`}).join('')}
+function playFan(el){if(el.classList.contains('playing'))return;const id=el.dataset.yt;
+  if(!aud.paused){aud.pause();$('#player').classList.remove('on');$('#pico').innerHTML='<path d="M3 1.5l9 5.5-9 5.5z"/>'}
+  if(typeof setAuto==='function'&&auto)setAuto(false);
+  $$('.fv.playing').forEach(v=>{v.classList.remove('playing');const fr=v.querySelector('iframe');fr&&fr.remove()});
+  el.classList.add('playing');el.insertAdjacentHTML('beforeend',`<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1" title="YouTube" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`)}
+document.addEventListener('click',e=>{const v=e.target.closest('.fv');if(v)playFan(v)});
+document.addEventListener('keydown',e=>{const v=e.target.closest&&e.target.closest('.fv');if(v&&(e.key==='Enter'||e.key===' ')){e.preventDefault();playFan(v)}});
 /* ---------- partenaires ---------- */
 const PTYPES=[
  {i:'<path d="M20 12V8H4v4M2 12h20v8H2zM12 8V4"/>',fr:['Marques & sponsoring','Campagnes, placements, contenus réseaux sociaux.'],ar:['العلامات والرعاية','حملات إعلانية ومحتوى لمواقع التواصل.']},
@@ -884,7 +956,7 @@ function setAuto(on){auto=on&&!RM;$('#apIco').innerHTML=auto?AP_PAUSE:AP_PLAY;co
 function autoLoop(t){
   if(auto){const dt=lastT?Math.min(.05,(t-lastT)/1000):0;lastT=t;
     const max=document.documentElement.scrollHeight-innerHeight;
-    if(scrollY>=max-2){setAuto(false)}else{acc+=innerHeight*.28*dt;if(acc>=1){const d=Math.floor(acc);acc-=d;scrollTo(0,scrollY+d)}}}
+    if(scrollY>=max-2){setAuto(false)}else{acc+=innerHeight*.4*dt;if(acc>=1){const d=Math.floor(acc);acc-=d;scrollTo(0,scrollY+d)}}}
   requestAnimationFrame(autoLoop)}
 requestAnimationFrame(autoLoop);
 // le visiteur reprend la main dès qu'il touche à la page
