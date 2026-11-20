@@ -52,10 +52,33 @@ html[lang=ar] .lab{letter-spacing:0;font-size:14px;font-family:Alexandria}
 .pre .nm span{display:inline-block;opacity:0;transform:translateY(40%);animation:up .8s cubic-bezier(.2,.8,.2,1) forwards}
 @keyframes up{to{opacity:1;transform:none}}
 .pre.ask{pointer-events:auto}
-.pre .enter{display:none;margin-top:34px;gap:12px;flex-direction:column;align-items:center}
-.pre.ask .enter{display:flex;animation:fi .8s}
-.pre .enter .btn{min-width:220px}
-.pre .enter button.mute{background:none;border:0;color:var(--mute);font:500 13px 'Inter Tight',Alexandria,sans-serif;cursor:pointer;text-decoration:underline;text-underline-offset:4px;min-height:44px}
+.pre.ask .c{opacity:0;transition:opacity .4s}
+.gate{position:absolute;inset:0;z-index:3;opacity:0;visibility:hidden;transition:opacity 1s,visibility 1s;overflow:hidden;background:#070608}
+.pre.ask .gate{opacity:1;visibility:visible}
+.pre.leave .gate{opacity:0;transition:opacity .9s .25s}
+.g-bg{position:absolute;inset:-6%;background:url(photos/door-hd.webp) 50% 25%/cover;filter:brightness(.38) saturate(.75);animation:kb 14s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1.12)}to{transform:scale(1)}}
+.g-vig{position:absolute;inset:0;background:radial-gradient(60% 60% at 50% 45%,rgba(43,28,48,.15),rgba(7,6,8,.92) 75%)}
+.g-dust i{position:absolute;bottom:-10px;width:3px;height:3px;border-radius:50%;background:#e8d7b4;opacity:0;animation:dust linear infinite}
+@keyframes dust{10%{opacity:.8}90%{opacity:.5}to{transform:translateY(-105vh);opacity:0}}
+.g-in{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;text-align:center;gap:6px;padding:20px}
+.g-rec{position:relative;width:min(380px,68vw);aspect-ratio:1;margin-bottom:34px}
+.g-disc{position:absolute;inset:0;border-radius:50%;background:repeating-radial-gradient(circle,#0c0b0d 0 1.5px,#1d1a1f 1.5px 3px);box-shadow:0 40px 80px -20px #000,0 0 0 1px #000,0 0 60px rgba(185,163,196,.18);animation:spin 9s linear infinite}
+.g-disc:before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 200deg,transparent 0 10%,rgba(255,240,220,.14) 16%,transparent 24% 60%,rgba(255,240,220,.08) 66%,transparent 74%)}
+.g-disc:after{content:"";position:absolute;inset:31%;border-radius:50%;background:url(photos/door-hd.webp) 50% 18%/cover;box-shadow:0 0 0 3px #c9a66b,0 0 0 6px #0c0b0d}
+.pre.leave .g-disc{animation-duration:.8s}
+.g-ring{position:absolute;inset:31%;border-radius:50%;border:1px solid rgba(243,240,236,.6);animation:gring 2.6s cubic-bezier(.2,.6,.2,1) infinite;pointer-events:none}
+.g-ring:nth-of-type(3){animation-delay:.85s}.g-ring:nth-of-type(4){animation-delay:1.7s}
+@keyframes gring{from{transform:scale(1);opacity:.8}to{transform:scale(2.6);opacity:0}}
+.g-play{position:absolute;left:50%;top:50%;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;border:0;background:rgba(243,240,236,.92);color:#0b0a0c;display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 40px rgba(0,0,0,.6);transition:transform .35s,background .35s;padding-left:4px}
+.g-play:hover{transform:scale(1.1);background:#fff}
+.g-play:focus-visible{outline:2px solid var(--lav);outline-offset:6px}
+.pre.leave .g-play{transform:scale(0);transition:transform .4s}
+.g-name{font-size:clamp(34px,6vw,96px);color:var(--ink);letter-spacing:.02em}
+.g-ar{font-family:Alexandria;font-weight:800;font-size:clamp(22px,2.6vw,40px);color:var(--lav)}
+.g-hint{margin-top:22px;font-size:14px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:#f3f0ec;text-shadow:0 2px 14px #000;animation:hint 2.4s ease-in-out infinite}
+@keyframes hint{50%{opacity:.55}}
+html[lang=ar] .g-hint{letter-spacing:0;font-size:15px}
 .pre .n{font-family:Archivo;font-stretch:125%;font-weight:300;font-size:14px;letter-spacing:.3em;color:var(--mute);margin-top:18px;font-variant-numeric:tabular-nums}
 /* nav */
 .nav{position:fixed;inset:0 0 auto;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px clamp(18px,3.4vw,56px);transition:.4s}
@@ -336,7 +359,16 @@ footer .lk{display:flex;gap:20px;flex-wrap:wrap}
 </style>
 </head>
 <body class="lock">
-<div class="pre" id="pre"><div class="h t"></div><div class="h b"></div><div class="c"><div><div class="nm wide" id="preN"></div><div class="n" id="preC">000</div><div class="enter"><button class="btn" id="enterBtn" type="button"><svg width="12" height="12" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1.5l9 5.5-9 5.5z"/></svg><span data-i="en1">Entrer</span></button><button class="mute" id="muteBtn" type="button" data-i="en2">Entrer sans le son</button></div></div></div></div>
+<div class="pre" id="pre"><div class="h t"></div><div class="h b"></div><div class="c"><div><div class="nm wide" id="preN"></div><div class="n" id="preC">000</div></div></div><div class="gate" id="gate" aria-hidden="true">
+  <div class="g-bg"></div><div class="g-vig"></div><div class="g-dust" id="gDust"></div>
+  <div class="g-in">
+    <div class="g-rec"><div class="g-disc"></div><span class="g-ring"></span><span class="g-ring"></span><span class="g-ring"></span>
+      <button class="g-play" id="enterBtn" type="button" aria-label="Entrer avec le son"><svg width="26" height="26" viewBox="0 0 14 14" fill="currentColor"><path d="M3.5 1.5l9 5.5-9 5.5z"/></svg></button></div>
+    <div class="g-name wide">BADR SOULTAN</div>
+    <div class="g-ar">بدر سلطان</div>
+    <p class="g-hint" data-i="en1">Montez le son · Entrez dans son univers</p>
+  </div>
+</div></div>
 <div class="grain"></div><div class="cols" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="pg" id="pg"></div>
 <div class="cdot" id="cdot"></div><div class="cring" id="cring"></div>
 <div class="peek" id="peek"><img alt="" id="peekImg"></div>
@@ -566,7 +598,7 @@ const SOC=[
  ['Facebook','https://www.facebook.com/badrsoultanofficiel','<path d="M15 3h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h2z"/>']
 ];
 const PLAT=[['Spotify','https://open.spotify.com/search/Badr%20Soultan'],['Apple Music','https://music.apple.com/search?term=Badr%20Soultan'],['YouTube Music','https://music.youtube.com/search?q=Badr%20Soultan'],['Deezer','https://www.deezer.com/search/Badr%20Soultan']];
-const AR={en1:'ادخل',en2:'الدخول بدون صوت',np:'لندن · 05.12.2026',m1:'القصة',m2:'الموسيقى',m3:'الأخبار',m4:'التواصل',m4b:'التواصل',
+const AR={en1:'شغّل الصوت · ادخل إلى عالمه',np:'لندن · 05.12.2026',m1:'القصة',m2:'الموسيقى',m3:'الأخبار',m4:'التواصل',m4b:'التواصل',
 h_l1:'الموقع الرسمي',h_l2:'أحفير · الشرق · المغرب',h_b1:'استمع إلى لوطوروت',h_b2:'قصته',
 st1:'هناك أصوات نعرفها من أول نغمة.',st2:'وهذا الصوت وُلد في شرق المغرب، <span class="wide" style="font-style:normal">في أحفير.</span>',cap1:'الوجه A · الفصل الأول',
 ah_k:'الفصل الأول',ah_p1:'مدينة صغيرة في الجهة الشرقية، على حافة الحدود وعند سفح الجبال. هنا للموسيقى اسم: الركادة. أكتاف ترقص وأعراس تمتد حتى الفجر.',ah_p2:'هنا كبر بدر زكراوي. وهنا صار <em class="it">بدر سلطان</em>.',
@@ -719,10 +751,11 @@ $('#pc').addEventListener('click',e=>{e.preventDefault();const c=$('#conf');c.st
 let saved='fr';try{saved=localStorage.getItem('bs3-lang')||'fr'}catch(_){}
 setLang(saved);requestAnimationFrame(frame);
 (function pre(){const t0=performance.now(),D=RM?200:1700;const step=n=>{const k=clamp((n-t0)/D);$('#preC').textContent=String(Math.round(ease(k)*100)).padStart(3,'0');
-  if(k<1)requestAnimationFrame(step);else{aud.preload='auto';startMusic(false).then(openSite).catch(()=>$('#pre').classList.add('ask'))}};requestAnimationFrame(step)})();
-function openSite(){const pr=$('#pre');if(!pr||pr.classList.contains('go'))return;pr.classList.remove('ask');pr.classList.add('go');document.body.classList.remove('lock');setTimeout(()=>pr.remove(),1300)}
+  if(k<1)requestAnimationFrame(step);else{aud.preload='auto';$('#pre').classList.add('ask');setTimeout(()=>$('#enterBtn').focus({preventScroll:true}),400)}};requestAnimationFrame(step)})();
+function openSite(){const pr=$('#pre');if(!pr||pr.classList.contains('go')||pr.classList.contains('leave'))return;pr.classList.add('leave');setTimeout(()=>{pr.classList.remove('ask');pr.classList.add('go');document.body.classList.remove('lock');setTimeout(()=>pr.remove(),1300)},900)}
+$('#gDust').innerHTML=Array.from({length:36},(_,i)=>`<i style="left:${(i*37)%100}%;animation-duration:${7+(i%6)}s;animation-delay:${-(i*0.7)%9}s;transform:scale(${.5+(i%4)/3})"></i>`).join('');
 $('#enterBtn').addEventListener('click',()=>{startMusic(true).catch(()=>{});openSite()});
-$('#muteBtn').addEventListener('click',openSite);
+
 }
 </script>
 </body>
