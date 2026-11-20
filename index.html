@@ -282,6 +282,13 @@ html[dir=rtl] .song .mt{direction:rtl}
 .fs .u{font-size:14px;opacity:.85;margin-top:6px}
 .fs .go{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 16px;border-radius:999px;background:rgba(255,255,255,.95);color:#0b0a0c;font-weight:700;font-size:13px}
 @media(max-width:900px){.fw{grid-template-columns:1fr 1fr;grid-auto-rows:150px}.fv.big{grid-column:span 2}.fv.wid{grid-column:span 2}}
+.fi-stage{transform-style:preserve-3d}
+.fi-halo{position:absolute;width:min(80vh,90vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(201,166,107,.35),rgba(125,40,70,.25) 40%,transparent 68%);filter:blur(10px);animation:hal 6s ease-in-out infinite alternate}
+@keyframes hal{to{transform:scale(1.12);opacity:.8}}
+.fi-badr{position:absolute;left:50%;bottom:0;height:min(86vh,1000px);width:auto;max-width:none;transform-origin:50% 100%;will-change:transform;filter:drop-shadow(0 0 40px rgba(201,166,107,.25)) drop-shadow(0 30px 60px rgba(0,0,0,.6));-webkit-mask:linear-gradient(#000 78%,transparent);mask:linear-gradient(#000 78%,transparent)}
+.fi-txt{top:auto!important;bottom:7vh}
+.fi-txt h2{font-size:clamp(54px,9vw,170px)!important}
+@media(max-width:900px){.fi-badr{height:68vh}.fi-txt{bottom:16vh}}
 /* ===== FINALE ===== */
 #finale{height:300vh;position:relative;background:#070608}
 .fi-bg{position:absolute;inset:-5%;background:url(photos/door-hd.webp) 50% 20%/cover;filter:brightness(.2) saturate(.5) blur(3px);transform:scale(1.1)}
@@ -658,10 +665,9 @@ footer .lk{display:flex;gap:20px;flex-wrap:wrap}
   <div class="stick">
     <div class="fi-bg"></div>
     <div class="fi-beams"><i></i><i></i><i></i><i></i></div>
-    <div class="fi-stage"><div class="ring" id="ring"></div><div class="fi-disc" id="fiDisc"></div></div>
+    <div class="fi-stage"><div class="fi-halo"></div><div class="ring" id="ring"></div><img class="fi-badr" id="fiBadr" src="photos/badr-cut.webp" alt="Badr Soultan"></div>
     <div class="fi-burst" id="fiBurst"></div>
     <div class="fi-txt" id="fiTxt">
-      <span class="lab" data-i="fi_k">Fin de la face B</span>
       <h2 class="wide" id="fi-t">BADR<br>SOULTAN</h2>
       <p class="it" data-i="fi_p">Merci d’avoir écouté. La suite s’écrit avec vous.</p>
     </div>
@@ -757,7 +763,7 @@ const SOC=[
  ['Spotify','https://open.spotify.com/artist/01haa57xRGVU3u7Nly8OD4','<circle cx="12" cy="12" r="9"/><path d="M7.5 10c3-1 6.5-.7 9 .8M8 13c2.4-.7 5-.5 7 .7M8.6 15.8c1.8-.5 3.7-.3 5.2.5"/>']
 ];
 const PLAT=[['Spotify','https://open.spotify.com/artist/01haa57xRGVU3u7Nly8OD4'],['Apple Music','https://music.apple.com/search?term=Badr%20Soultan'],['YouTube Music','https://music.youtube.com/search?q=Badr%20Soultan'],['Deezer','https://www.deezer.com/search/Badr%20Soultan']];
-const AR={m5:'المعجبون',fa_k:'جدار المعجبين',fa_t:'أجمل <span class="it">لحظاته</span>',fa_s:'الكليبات التي يتشاركها الجمهور، شاهدها هنا مباشرة. ولكي لا يفوتك شيء، تابعه على تيك توك وإنستغرام.',ct3:'الشركاء',pt_t:'لنتعاون',pt_s:'العلامات التجارية والمنظمون والإعلام وشركات الإنتاج والفنانون: بدر سلطان منفتح على التعاونات التي تشبهه، أصيلة وكريمة وفخورة بجذورها.',pt_b1:'اقترح تعاوناً',pt_b2:'عبر البريد الإلكتروني',pt_k:'عملوا مع بدر',pt_n:'تعاونات ظاهرة في إصداراته الرسمية وملصقاته.',fi_k:'نهاية الوجه B',fi_p:'شكراً على الاستماع. البقية نكتبها معكم.',fi_c:'الإدارة والحجز',fi_tel:'اتصال',fi_mail:'البريد الإلكتروني',en1:'شغّل الصوت · ادخل إلى عالمه',np:'لندن · 05.12.2026',m1:'القصة',m2:'الموسيقى',m3:'الأخبار',m4:'التواصل',m4b:'التواصل',
+const AR={m5:'المعجبون',fa_k:'جدار المعجبين',fa_t:'أجمل <span class="it">لحظاته</span>',fa_s:'الكليبات التي يتشاركها الجمهور، شاهدها هنا مباشرة. ولكي لا يفوتك شيء، تابعه على تيك توك وإنستغرام.',ct3:'الشركاء',pt_t:'لنتعاون',pt_s:'العلامات التجارية والمنظمون والإعلام وشركات الإنتاج والفنانون: بدر سلطان منفتح على التعاونات التي تشبهه، أصيلة وكريمة وفخورة بجذورها.',pt_b1:'اقترح تعاوناً',pt_b2:'عبر البريد الإلكتروني',pt_k:'عملوا مع بدر',pt_n:'تعاونات ظاهرة في إصداراته الرسمية وملصقاته.',fi_p:'شكراً على الاستماع. البقية نكتبها معكم.',fi_c:'الإدارة والحجز',fi_tel:'اتصال',fi_mail:'البريد الإلكتروني',en1:'شغّل الصوت · ادخل إلى عالمه',np:'لندن · 05.12.2026',m1:'القصة',m2:'الموسيقى',m3:'الأخبار',m4:'التواصل',m4b:'التواصل',
 h_l1:'الموقع الرسمي',h_l2:'أحفير · الشرق · المغرب',h_b1:'استمع إلى لوطوروت',h_b2:'قصته',
 st1:'هناك أصوات نعرفها من أول نغمة.',st2:'وهذا الصوت وُلد في شرق المغرب، <span class="wide" style="font-style:normal">في أحفير.</span>',cap1:'الوجه A · الفصل الأول',
 ah_k:'الفصل الأول',ah_p1:'مدينة صغيرة في الجهة الشرقية، على حافة الحدود وعند سفح الجبال. هنا للموسيقى اسم: الركادة. أكتاف ترقص وأعراس تمتد حتى الفجر.',ah_p2:'هنا كبر بدر زكراوي. وهنا صار <em class="it">بدر سلطان</em>.',
@@ -942,9 +948,9 @@ const fin=$('#finale');let boomed=false;
 function finaleFrame(t){const r=fin.getBoundingClientRect(),H=innerHeight;
   if(r.top<H&&r.bottom>0){const p=clamp(-r.top/(r.height-H)),e=x=>1-Math.pow(1-x,3);
     fin.classList.toggle('on',p>.02);
-    $('#ring').style.transform=`rotateX(-14deg) rotateY(${p*300+(RM?0:t/90)}deg) scale(${.6+e(clamp(p/.3))*.4})`;
-    $('#fiDisc').style.transform=`rotate(${p*900+(RM?0:t/14)}deg) scale(${.7+e(clamp(p/.3))*.3-clamp((p-.5)/.3)*.25})`;
-    const a=clamp((p-.1)/.15)*(1-clamp((p-.42)/.12));$('#fiTxt').style.opacity=a;$('#fiTxt').style.transform=`translateY(calc(-50% + ${(1-clamp((p-.1)/.15))*40}px)) scale(${1+clamp((p-.42)/.12)*.08})`;
+    $('#ring').style.transform=`translateY(-6vh) rotateX(-12deg) rotateY(${p*300+(RM?0:t/90)}deg) scale(${.6+e(clamp(p/.3))*.4})`;
+    const bk=e(clamp(p/.3));$('#fiBadr').style.transform=`translate3d(-50%,${(1-bk)*30}vh,0) scale(${.85+bk*.15-clamp((p-.5)/.3)*.12})`;$('#fiBadr').style.opacity=.2+bk*.8;
+    const a=clamp((p-.1)/.15)*(1-clamp((p-.42)/.12));$('#fiTxt').style.opacity=a;$('#fiTxt').style.transform=`translateY(${(1-clamp((p-.1)/.15))*40}px) scale(${1+clamp((p-.42)/.12)*.08})`;
     const c=e(clamp((p-.48)/.25));$('#fiCard').style.opacity=c;$('#fiCard').style.transform=`translate(-50%,${(1-c)*40}%)`;$('#fiCard').style.pointerEvents=c>.5?'auto':'none';
     if(p>.92&&!boomed){boomed=true;fin.classList.add('boom')}if(p<.6&&boomed){boomed=false;fin.classList.remove('boom')}}
   requestAnimationFrame(finaleFrame)}
